@@ -12,12 +12,24 @@ object build extends Build {
         , "releases" at "http://oss.sonatype.org/content/repositories/releases"
         ))
 
-  lazy val publishSetting = publishTo <<= version.apply{
-    v => {
-      val flavour = if (v.trim.endsWith("SNAPSHOT")) "snapshots" else "releases"
-      Some(Resolver.sftp("repo.mth.io","repo.mth.io", "repo.mth.io/data/snapshots") as ("web", new java.io.File(
-          System.getProperty("user.home") + "/.ssh/id_dsa_publish")))
-    }
+  // Publish settings have been changed for Ephox internal publishing.
+  //
+  //  FOR Mark Hibberd's mth.io
+  //
+  //  lazy val publishSetting = publishTo <<= version.apply{
+  //    v => {
+  //      val flavour = if (v.trim.endsWith("SNAPSHOT")) "snapshots" else "releases"
+  //      Some(Resolver.sftp("repo.mth.io","repo.mth.io", "repo.mth.io/data/snapshots") as ("web", new java.io.File(
+  //          System.getProperty("user.home") + "/.ssh/id_dsa_publish")))
+  //    }
+  //  }
+
+  lazy val publishSetting = publishTo <<= version.apply { v =>
+    val flavour = if (v.trim.endsWith("SNAPSHOT")) "snapshots" else "releases"
+    val home = System.getProperty("user.home")
+    val key = new java.io.File(home + "/.ssh/sbt_publish_key")
+    val repo = Resolver.sftp("ephox sbt repository","sbt", flavour) as ("ephox", key)
+    Some(repo)
   }
 
   val route = Project(
