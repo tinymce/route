@@ -18,7 +18,7 @@
      h2 {
         font-size: 2em;
      }
-    
+
    </style>
 </head>
 <body>
@@ -62,12 +62,12 @@ import io.mth.route._
         Build a route function:
     </p>
     <pre>
-val route = 
-  ("book" <%> stringtoken).route(book => 
-    Get(getbook(book)) |                
-    Put(createbook(book))              
-  ) | ("people" </> "authors").route( 
-    Get(listauthors)                 
+val route =
+  ("book" <%> stringtoken).route(book =>
+    Get(getbook(book)) |
+    Put(createbook(book))
+  ) | ("people" </> "authors").route(
+    Get(listauthors)
   )
     </pre>
     <p>
@@ -79,7 +79,7 @@ val req = request(Get, "book" </> "1984", text.html)
     <p>
         Apply request to route function.
     </p>
-    <pre>       
+    <pre>
 val res = route(req)
     </pre>
 
@@ -101,20 +101,13 @@ val res = route(req)
     <h2>code</h2>
 
     <p>
-      Grab the code from the mirror at <a href="https://github.com/markhibberd/route">https://github.com/markhibberd/route</a>. 
+      Grab the code from the mirror at <a href="https://github.com/ephox/route">https://github.com/ephox/route</a>.
     </p>
 
     <h2>license</h2>
 
     <p>
-     The code is free to use under the terms of a <a href="https://github.com/markhibberd/route/master/LICENSE">3 point BSD license</a>
-    </p>
-
-    <h2>contact</h2>
-
-    <p>
-      Feel free to contact me <a href="mailto:mark@hibberd.id.au">mark@hibberd.id.au</a> or
-       <a href="http://twitter.com/markhibberd/">@markhibberd</a>.
+     The code is free to use under the terms of a <a href="https://github.com/ephox/route/master/LICENSE">Apache-2.0 license</a>
     </p>
 
   </div>
@@ -126,9 +119,6 @@ val res = route(req)
   <div id="footlinks">
 
     <a href="http://mth.io"/>mth.io</a>
-  </div>
-  <div id="license">
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/80x15.png" /></a>
   </div>
   </div>
   </div>

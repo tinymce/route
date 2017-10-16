@@ -3,7 +3,7 @@ NAME
 
 DESCRIPTION
 	Route is a library of data types and combinators for matching
-        http requests. The matching mechanism allows the library to 
+        http requests. The matching mechanism allows the library to
         build dispatch/routing tables for web applications.
 
 USAGE
@@ -16,7 +16,7 @@ USAGE
 
           import io.mth.route._
 
-          val route = 
+          val route =
             ("book" <%> stringtoken).route(book =>  // match urls with 2 framents starting with book
               Get(getbook(book)) |                  // for those urls, dispatch to getbook when the method is Get
               Put(createbook(book))                 // for those urls, dispatch to createbook when the method is Put
@@ -25,14 +25,14 @@ USAGE
             )
 
           val req = request(Get, "book" </> "1984", text.html)
- 
+
           val res = route(req)
- 
+
 STATE
         The `route` library has a stable scala API for version 1.0.
 
 LIMITATIONS
-        Currently there are four missing features planned for 
+        Currently there are four missing features planned for
         version 2:
           1. A clean java API.
           2. Combinators for routing multiple matchers to one target.
@@ -46,9 +46,9 @@ AUTHOR
 
 NOTES
         1. official repository
-           https://github.com/markhibberd/route
+           https://github.com/ephox/route
         2. site and documentation
            http://route.mth.io
-        3. license (3 point BSD style)
-           https://github.com/markhibberd/route/blob/master/LICENSE
+        3. license (Apache-2.0 style)
+           https://github.com/ephox/route/blob/master/LICENSE
 
